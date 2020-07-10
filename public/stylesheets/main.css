@@ -1,0 +1,37 @@
+#main-parallax{
+    color:white;
+    padding-top:50px;
+}
+
+#main-navbar a
+{
+    color:white;
+}
+
+.parallax-window {
+    height:500px;
+}
+
+#carouselExampleCaptions,.carousel-item,.carousel-item img,.carousel-inner
+{
+    width:600px;
+    height:350px;
+
+
+}
+#carouselExampleCaptions
+{
+    margin:10px auto;
+}
+#main-parallax .row{
+    margin-top:10px;
+}
+
+
+
+#carouselExampleCaptions img{
+    border:beige solid 2px;
+}
+
+
+
