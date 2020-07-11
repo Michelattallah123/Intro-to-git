@@ -1,6 +1,7 @@
 const  mongoose     = require("mongoose"),
        axios        = require('axios').default,
-       Movie        = require("../../models/movie");
+       Movie        = require("../../models/movie"),
+       User         = require("../../models/user");
 
 function seedDb()
 {
@@ -45,5 +46,6 @@ function seedDb()
                 });
         });
     })
+    User.deleteMany({},function(err,success){});
 }
 module.exports = seedDb;

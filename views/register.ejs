@@ -9,22 +9,27 @@
                 <hr>
                 
             </div>
-            <div id="registerForm" class="col-md-5"><form>
+            <div id="registerForm" class="col-md-5">
+              <form method="POST" action="/register">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">First Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <label for="exampleUsername">User Name</label>
+                  <input type="text" id="exampleUsername" name="username" class="form-control" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Last Name</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <label for="exampleFirstName">First Name</label>
+                  <input type="text" id="exampleFirstName" name="userData[firstName]" class="form-control" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="exampleLastName">Last Name</label>
+                    <input type="text" id="exampleLastName" name="userData[lastName]" class="form-control" aria-describedby="emailHelp">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="exampleEmail">Email address</label>
+                    <input type="email" id="exampleEmail" name="userData[email]" class="form-control" aria-describedby="emailHelp">
                   </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <label for="examplePassword">Password</label>
+                  <input type="password" id="examplePassword" name="password" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form></div>

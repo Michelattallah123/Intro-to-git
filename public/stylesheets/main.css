@@ -2,9 +2,46 @@ body,html{
     height:100%;
 }
 
+/*===========
+//INDEX
+===========*/
+
+
+.alert{
+    /* opacity:60%; */
+    z-index:2;
+    width:100%;
+    font-size: 16px;
+    position:fixed;
+    top:40px;
+    padding:1px 0;
+    display:flex;
+    justify-content: space-around;
+}
+.alert-success button{
+    color:rgb(21,87,36)!important;
+}
+
+.alert-success{
+    background-color: rgba(212,237,218,0.8);
+    border:0;
+}
+
+.alert-danger{
+    background-color: rgba(166, 68, 82,0.8);
+    border:rgba(255,255,255,0.7) 1px solid;
+    color:white;
+}
+.alert-button{
+    color:white;
+    border:0;
+    outline:none !important;
+    background-color:transparent;
+}
+
 #main-parallax{
     color:white;
-    padding-top:50px;
+    padding-top:80px;
 }
 
 #main-navbar a
@@ -20,16 +57,22 @@ body,html{
 {
     width:600px;
     height:350px;
-
-
 }
 #carouselExampleCaptions
 {
     margin:10px auto;
 }
-#main-parallax .row{
-    margin-top:10px;
-}
+
+@media (max-width: 992px) {
+    #carouselText{
+       text-align:center;
+    }
+    #carouselExampleCaptions,.carousel-item,.carousel-item img,.carousel-inner
+    {
+        width:480px;
+        height:280px;
+    }
+  }
 
 
 
@@ -54,6 +97,7 @@ body,html{
 /*==========
 //REGISTER
 ==========*/
+
 #registerBody{
     background: url("/pictures/ticket.jpg");
     height: 100%;
@@ -90,7 +134,8 @@ body,html{
 #registerText{
     color:white;
 }
-hr{
+
+#registerText hr{
   border: #AB2046 1px solid;
 }
 

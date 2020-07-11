@@ -1,10 +1,11 @@
+
 <nav id="main-navbar" class="navbar navbar-expand-md fixed-top">
     <a class="navbar-brand" href="#">Engie Movies</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav ">
         <li class="nav-item">
           <a class="nav-link" href="#">Login</a>
@@ -17,4 +18,15 @@
           </li>
       </ul>
     </div>
-  </nav>
+</nav>
+
+  <div>
+    <!-- <div class="alert alert-danger" role="alert"><%= error %>Error you don't have permission to do that<button class="alert-button">x</button></div> -->
+    <%if(error && error.length>0){%> 
+      <div class="alert alert-danger" role="alert"><%= error %><button class="alert-button"></button></div>
+    <%}%>
+    <%if(success && success.length>0){%> 
+      <div class="alert alert-success" role="alert"><%= success %><button class="alert-button">x</button></div>
+      <%}%>
+  </div>
+  

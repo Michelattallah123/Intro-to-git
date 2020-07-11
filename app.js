@@ -3,7 +3,9 @@ const axios                    = require('axios').default,
       mongoose                 = require("mongoose"),
       passport                 = require("passport"),
       LocalStrategy            = require("passport-local"),
-      passportLocalMongoose    = require("passport-local-mongoose");
+      passportLocalMongoose    = require("passport-local-mongoose"),
+      bodyParser               = require("body-parser"),
+      flash                    = require("connect-flash");
 
 let   ejs                      = require('ejs'),
       Movie                    = require("./models/movie.js"),
@@ -12,13 +14,16 @@ let   ejs                      = require('ejs'),
       randomNum                = require("./public/scripts/randomNum.js"),
       movieRoutes              = require("./routes/movies.js"),
       authRoutes               = require("./routes/index.js");
+      
 
 //=============
 //CONFIGURATION
 //=============
 const app = express();
-mongoose.connect('mongodb://127.0.0.1:27017/movie_app', {useNewUrlParser: true, useUnifiedTopology: true});
+app.use(flash());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public")); 
+mongoose.connect('mongodb://127.0.0.1:27017/movie_app', {useNewUrlParser: true, useUnifiedTopology: true});
 
 //=============
 //PASSPORT
@@ -40,9 +45,17 @@ passport.deserializeUser(User.deserializeUser());
 //ROUTES
 //=============
 
+
 //INDEX
 app.get("/",function(req,res){
     res.redirect("/movies");
+});
+
+app.use(function(req,res,next){
+	res.locals.currentUser = req.user;
+	res.locals.error = req.flash("error");
+	res.locals.success = req.flash("success");
+	next();
 });
 
 //MOVIES
