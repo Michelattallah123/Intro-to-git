@@ -5,15 +5,45 @@ const  mongoose     = require("mongoose"),
 function seedDb()
 {
 	Movie.deleteMany({},function(err,success){
-        axios.get("http://www.omdbapi.com/?apikey=thewdb&s=star").then(function(Movies){  
-        for(let i=0;i<3;i++)
-            {  
-                Movies.data.Search[i]["Plot"]="Lucas and Anakin";     
-                Movie.create(Movies.data.Search[i],function(err,addMovie){
-                console.log(addMovie);
+        axios.get("http://www.omdbapi.com/?apikey=thewdb&t=star").then(function(Movies){  
+                var data = {
+                    Title:         Movies.data.Title,
+                    Plot:          Movies.data.Plot,
+                    Poster:        Movies.data.Poster,
+                    Year:          Movies.data.Year,
+                    imdbID:        Movies.data.imdbID
+                }
+                Movie.create(data,function(err,addMovie)
+                {
+                 console.log(addMovie);    
                 });
-            }
         });
-    });
+        axios.get("http://www.omdbapi.com/?apikey=thewdb&t=chungking-express").then(function(Movies){  
+                var data = {
+                    Title:         Movies.data.Title,
+                    Plot:          Movies.data.Plot,
+                    Poster:        Movies.data.Poster,
+                    Year:          Movies.data.Year,
+                    imdbID:        Movies.data.imdbID
+                }
+                Movie.create(data,function(err,addMovie)
+                {
+                 console.log(addMovie);    
+                });
+        });
+        axios.get("http://www.omdbapi.com/?apikey=thewdb&t=the-shining").then(function(Movies){  
+                var data = {
+                    Title:         Movies.data.Title,
+                    Plot:          Movies.data.Plot,
+                    Poster:        Movies.data.Poster,
+                    Year:          Movies.data.Year,
+                    imdbID:        Movies.data.imdbID
+                }
+                Movie.create(data,function(err,addMovie)
+                {
+                 console.log(addMovie);    
+                });
+        });
+    })
 }
 module.exports = seedDb;

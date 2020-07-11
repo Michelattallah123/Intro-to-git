@@ -1,3 +1,7 @@
+body,html{
+    height:100%;
+}
+
 #main-parallax{
     color:white;
     padding-top:50px;
@@ -44,6 +48,52 @@
 .movie-title{
     height:10%;
 }
+
+
+
+/*==========
+//REGISTER
+==========*/
+#registerBody{
+    background: url("/pictures/ticket.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(0.5);
+}
+
+.background-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url("/pictures/ticket.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    filter: blur(5px);
+    transform: scale(1.02);
+    overflow: hidden;
+} 
+
+#registerContainer{
+    height:800px;
+}
+
+#registerForm{
+    background-color: white;
+    width:600px;
+    padding:60px 30px;
+    border-radius:8px;
+}
+
+#registerText{
+    color:white;
+}
+hr{
+  border: #AB2046 1px solid;
+}
+
 
 
 
