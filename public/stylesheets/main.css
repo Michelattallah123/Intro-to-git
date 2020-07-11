@@ -6,7 +6,22 @@ body,html{
 //INDEX
 ===========*/
 
+/*////NAVBAR/////*/
+#main-navbar #login-dropMenu a{
+    color:black;
+}
 
+#login-button
+{
+    background-color: transparent;
+    border:0;
+}
+
+#login-submit{
+    margin-top:15px;
+}
+
+/*////ALERT FLASH/////*/
 .alert{
     /* opacity:60%; */
     z-index:2;
@@ -29,8 +44,11 @@ body,html{
 
 .alert-danger{
     background-color: rgba(166, 68, 82,0.8);
-    border:rgba(255,255,255,0.7) 1px solid;
     color:white;
+    border:0;
+}
+.alert-danger button{
+    color:white !important;
 }
 .alert-button{
     color:white;
@@ -39,6 +57,7 @@ body,html{
     background-color:transparent;
 }
 
+/*////PARALLAX/////*/
 #main-parallax{
     color:white;
     padding-top:80px;

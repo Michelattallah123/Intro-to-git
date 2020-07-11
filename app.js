@@ -13,7 +13,8 @@ let   ejs                      = require('ejs'),
       seedDB                   = require("./public/scripts/seed.js"),
       randomNum                = require("./public/scripts/randomNum.js"),
       movieRoutes              = require("./routes/movies.js"),
-      authRoutes               = require("./routes/index.js");
+      authRoutes               = require("./routes/index.js"),
+      middleware               = require("./middleware/index.js");
       
 
 //=============
@@ -52,6 +53,7 @@ app.get("/",function(req,res){
 });
 
 app.use(function(req,res,next){
+    res.locals.middleware  = middleware;
 	res.locals.currentUser = req.user;
 	res.locals.error = req.flash("error");
 	res.locals.success = req.flash("success");

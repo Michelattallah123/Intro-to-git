@@ -28,8 +28,30 @@ let   Movie               = require("../models/movie.js"),
                     
                 })
             });
+//=========
+//LOGIN
+//=========
  
-           
+router.get("/login",function(req,res){
+    res.render("login.ejs");
+});
+
+router.post("/login",passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/",
+    failureFlash: true 
+}) ,function(req, res){
+});
+
+//========
+//LOGOUT
+//========
+
+    router.get("/logout", function(req, res){
+        req.logout();
+        req.flash("success","You Successfuly Logged Out!");
+        res.redirect("/movies");
+    });         
 
 
 
