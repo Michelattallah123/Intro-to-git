@@ -33,5 +33,23 @@
     border:beige solid 2px;
 }
 
+#movies-container
+{
+    margin-top:25px;
+}
+#movies-container img{
+    height:260px;
+}
+
+.movie-title{
+    height:10%;
+}
+
+
+
+
+
+
+
 
 
