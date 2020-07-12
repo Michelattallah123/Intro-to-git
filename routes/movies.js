@@ -3,9 +3,19 @@ const express             = require("express"),
 let   Movie               = require("../models/movie.js");
 
 router.get("/",function(req,res){
+    if(req.query.search){
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Movie.find({Title:regex},function(err,movies){
+            console.log(movies);
+            res.render("index.ejs",{movies:movies});
+            });
+    }
+    else
+    {
     Movie.find({},function(err,movies){
     res.render("index.ejs",{movies:movies});
     });
+    }
 });
 
 router.get("/:id",function(req,res){
@@ -15,6 +25,8 @@ router.get("/:id",function(req,res){
 
        
     
-
+    function escapeRegex(text) {
+        return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+    };
 
 module.exports= router;

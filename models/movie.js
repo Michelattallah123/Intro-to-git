@@ -3,7 +3,16 @@ var movieSchema = new mongoose.Schema({
     Title:         String,
     Plot:          String,
     Poster:        String,
-    Rating:        Number,
+    Reviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Review"
+        }
+    ],
+    Rating: {
+        type: Number,
+        default: 0
+    },
     Year:          Date,
     imdbID:        String
  });

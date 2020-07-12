@@ -11,6 +11,15 @@ body,html{
     color:black;
 }
 
+#navbarSearchText{
+   width:150px;
+   height:28px;
+
+}
+#navbarButton{
+    height:32px;
+}
+
 #login-button
 {
     background-color: transparent;

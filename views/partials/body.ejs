@@ -48,6 +48,16 @@
             <a class="nav-link" href="/logout">Sign Out</a>
           </li>
         <%}%>
+        <li>
+
+          <form action="/movies" method="GET" id="navbarSearch" class="form-inline my-2 my-lg-0">
+            <div class="form-group">
+              <input id="navbarSearchText" class="form-control mr-sm-2" type="text" name="search" placeholder="Search" >
+              <input id="navbarButton" type="submit" value="Search" class="btn btn-light">
+            </div>
+          </form>
+
+        </li>
       </ul>
     </div>
 </nav>
