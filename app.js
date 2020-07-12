@@ -5,7 +5,9 @@ const axios                    = require('axios').default,
       LocalStrategy            = require("passport-local"),
       passportLocalMongoose    = require("passport-local-mongoose"),
       bodyParser               = require("body-parser"),
-      flash                    = require("connect-flash");
+      flash                    = require("connect-flash"),
+      session                  = require('express-session');
+
 
 let   ejs                      = require('ejs'),
       Movie                    = require("./models/movie.js"),
@@ -14,6 +16,7 @@ let   ejs                      = require('ejs'),
       randomNum                = require("./public/scripts/randomNum.js"),
       movieRoutes              = require("./routes/movies.js"),
       authRoutes               = require("./routes/index.js"),
+      reviewRoutes             = require("./routes/reviews.js")
       middleware               = require("./middleware/index.js");
       
 
@@ -60,10 +63,9 @@ app.use(function(req,res,next){
 	next();
 });
 
-//MOVIES
+//ROUTES
 app.use("/movies",movieRoutes);
-
-//AUTH 
+app.use("/movies/:id/reviews",reviewRoutes);
 app.use(authRoutes);
 
 

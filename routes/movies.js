@@ -1,5 +1,6 @@
 const express             = require("express"),
-      router              = express.Router({mergeParams:true});
+      router              = express.Router({mergeParams:true}),
+      axios               = require('axios').default;  
 let   Movie               = require("../models/movie.js");
 
 router.get("/",function(req,res){

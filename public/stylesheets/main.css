@@ -167,7 +167,19 @@ body,html{
   border: #AB2046 1px solid;
 }
 
+/*==========
+//MOVIE SHOW
+==========*/
+#show-body
+{
+    padding-top:50px;
+    ;
+}
 
+#review
+{
+    outline:none;
+}
 
 
 

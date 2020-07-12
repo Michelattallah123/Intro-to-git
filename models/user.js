@@ -5,7 +5,13 @@ var mongoose = require("mongoose"),
        username   : String,
        password   : String,
        email      : String,
-       favorites  : {}
+       favorites  : {},
+       reviews: [
+         {
+             type: mongoose.Schema.Types.ObjectId,
+             ref: "Review"
+         }
+       ]
     });
 
  userSchema.plugin(passportLocalMongoose);

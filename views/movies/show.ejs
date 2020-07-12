@@ -1,14 +1,26 @@
-<h1>Hi</h1>
+<%- include("../partials/header") %>
+<body id="show-body">
+<%- include("../partials/body") %>
 
 <div class="container">
-    
-
-
-                    <img src="<%=movie.Poster%>">
-                <div class="movie-title">
+        <img src="<%=movie.Poster%>">
+            <div class="movie-title">
                     <h4><%=movie.Title%></h4>
-                </div>
             </div>
-
-    </div>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Review This Movie
+                </a>
+                <div class="dropdown-menu">
+                    <form class="px-4 py-3" method="POST" action="/movies/<%=movie.imdbID%>/reviews">
+                      <div class="form-group">
+                        <h4>My Review</h4>
+                        <textarea name="review" id="review" cols="60" rows="10" placeholder="Text..."></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Add Review</button>
+                    </form>
+                  </div>
+            </div>
 </div>
+
+<%- include("../partials/footer") %>
