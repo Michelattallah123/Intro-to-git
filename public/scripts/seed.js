@@ -1,7 +1,8 @@
 const  mongoose     = require("mongoose"),
        axios        = require('axios').default,
        Movie        = require("../../models/movie"),
-       User         = require("../../models/user");
+       User         = require("../../models/user"),
+       Review        = require("../../models/review");
 
 function seedDb()
 {
@@ -15,8 +16,7 @@ function seedDb()
                     imdbID:        Movies.data.imdbID
                 }
                 Movie.create(data,function(err,addMovie)
-                {
-                 console.log(addMovie);    
+                {   
                 });
         });
         axios.get("http://www.omdbapi.com/?apikey=thewdb&t=chungking-express").then(function(Movies){  
@@ -28,8 +28,7 @@ function seedDb()
                     imdbID:        Movies.data.imdbID
                 }
                 Movie.create(data,function(err,addMovie)
-                {
-                 console.log(addMovie);    
+                {    
                 });
         });
         axios.get("http://www.omdbapi.com/?apikey=thewdb&t=the-shining").then(function(Movies){  
@@ -41,11 +40,12 @@ function seedDb()
                     imdbID:        Movies.data.imdbID
                 }
                 Movie.create(data,function(err,addMovie)
-                {
-                 console.log(addMovie);    
+                {   
                 });
         });
     })
     User.deleteMany({},function(err,success){});
+    Review.deleteMany({},function(err,success){});
+
 }
 module.exports = seedDb;

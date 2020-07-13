@@ -15,33 +15,39 @@ router.post("/",function(req,res){
     Movie.findOne({'imdbID': req.params.id},function(err,movie){
         User.findOne({username:req.user.username},function(err,user){
             
-        if(err)
-        {
-          
-        }
-        else{
-                 
-            Review.create({text:req.body.review},function(err,review){
-                if(err){
-console.log(err);
-                }
-                else{
-                    movie.Reviews.push(review);
-                    movie.save();
-                    review.movie=movie;
-                    review.author.username=req.user.username;
-                    review.author.id=req.user;
-                    review.save();
-                    user.reviews.push(review);
-                    user.save();
-                    req.flash("success","Successfully added comment");
-                    res.redirect('/movies/'+movie.imdbID);
-                }
-            });
-        }
+            if(err)
+            {
+              
+            }
+            else{
+                     
+                    Review.create({},function(err,review){
+                    if(err){
+                        console.log(err);
+                    }
+                    else{
+                            movie.Reviews.push(review);
+                            movie.save();
+                            const newReview = {
+                                text:req.body.review,
+                                author:{
+                                    id:         req.user,
+                                    username:   req.user.username,
+                                    name:       req.user.name
+                                }
+                            }
+                            review.movie=movie;
+                            review.review = newReview;
+                            review.save();
+                            user.reviews.push(review);
+                            user.save();
+                            req.flash("success","Successfully added comment");
+                            res.redirect('/movies/'+movie.imdbID);
+                    }
+                });
+            }
         });
-        
-    })
+    });
 });
 
 module.exports= router;

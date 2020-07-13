@@ -1,7 +1,8 @@
 const express             = require("express"),
       router              = express.Router({mergeParams:true}),
-      axios               = require('axios').default;  
-let   Movie               = require("../models/movie.js");
+      axios               = require('axios').default; 
+let   Movie               = require("../models/movie.js"),
+      Review              = require("../models/review.js");
 
 router.get("/",function(req,res){
     if(req.query.search){
@@ -20,7 +21,8 @@ router.get("/",function(req,res){
 });
 
 router.get("/:id",function(req,res){
-    Movie.findOne({imdbID:req.params.id},function(err,movie){
+    Movie.findOne({imdbID:req.params.id}).populate('Reviews').exec(function(err,movie){
+        console.log(movie);
         res.render("./movies/show.ejs",{movie:movie});
     });});
 

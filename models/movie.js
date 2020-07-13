@@ -3,6 +3,12 @@ var movieSchema = new mongoose.Schema({
     Title:         String,
     Plot:          String,
     Poster:        String,
+    Released:      String,
+    Runtime:       String,
+    Genre:         String,
+    Director:      String,
+    Writers:[],
+    Actors:[],
     Reviews: [
         {
             type: mongoose.Schema.Types.ObjectId,

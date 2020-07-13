@@ -6,7 +6,8 @@ const axios                    = require('axios').default,
       passportLocalMongoose    = require("passport-local-mongoose"),
       bodyParser               = require("body-parser"),
       flash                    = require("connect-flash"),
-      session                  = require('express-session');
+      session                  = require('express-session'),
+      moment                   = require('moment');
 
 
 let   ejs                      = require('ejs'),
@@ -16,14 +17,16 @@ let   ejs                      = require('ejs'),
       randomNum                = require("./public/scripts/randomNum.js"),
       movieRoutes              = require("./routes/movies.js"),
       authRoutes               = require("./routes/index.js"),
-      reviewRoutes             = require("./routes/reviews.js")
+      reviewRoutes             = require("./routes/reviews.js"),
       middleware               = require("./middleware/index.js");
+      
       
 
 //=============
 //CONFIGURATION
 //=============
 const app = express();
+app.locals.moment = require("moment");
 app.use(flash());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public")); 

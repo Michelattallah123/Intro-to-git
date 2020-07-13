@@ -3,6 +3,7 @@
 <%- include("../partials/body") %>
 
 <div class="container">
+  <div class="movie-data">
         <img src="<%=movie.Poster%>">
             <div class="movie-title">
                     <h4><%=movie.Title%></h4>
@@ -21,6 +22,34 @@
                     </form>
                   </div>
             </div>
+  </div>
+  <div class="reviews">
+  <h1>Reviews</h1>
+  <% for(let i=0;i<movie.Reviews.length;i++){%>
+  <div class="reviewComment">
+    <p>
+    <%=movie.Reviews[i].review.text%>
+    </p>
+    <p>
+    <%=movie.Reviews[i].review.author.name%> - <%=moment(movie.Reviews[i].review.date).fromNow()%>
+    </p>
+    <p>
+    Rating:<%=movie.Reviews[i].review.rating%>
+    </p>
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+  </div>
+    
+    <%}%>
+  </div>
 </div>
 
 <%- include("../partials/footer") %>

@@ -24,6 +24,7 @@ body,html{
 {
     background-color: transparent;
     border:0;
+    padding:7px;
 }
 
 #login-submit{
