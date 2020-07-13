@@ -7,7 +7,8 @@ const axios                    = require('axios').default,
       bodyParser               = require("body-parser"),
       flash                    = require("connect-flash"),
       session                  = require('express-session'),
-      moment                   = require('moment');
+      moment                   = require('moment'),
+      methodOverride           = require("method-override");
 
 
 let   ejs                      = require('ejs'),
@@ -30,6 +31,7 @@ app.locals.moment = require("moment");
 app.use(flash());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public")); 
+app.use(methodOverride("_method"));
 mongoose.connect('mongodb://127.0.0.1:27017/movie_app', {useNewUrlParser: true, useUnifiedTopology: true});
 
 //=============
@@ -46,7 +48,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// seedDB();
+seedDB();
 
 //=============
 //ROUTES

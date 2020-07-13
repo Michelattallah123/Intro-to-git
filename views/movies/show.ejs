@@ -39,7 +39,9 @@
                 </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="editReviewButton dropdown-item">Edit</a>
-                    <a class="deleteReviewButton dropdown-item">Delete</a>
+                    <form action="/movies/<%= movie.imdbID %>/reviews/<%=movie.Reviews[i].id%>?_method=DELETE" method="POST" >
+                      <button class="submit button deleteReviewButton dropdown-item">Delete</button>
+                    </form>
                     </div>
               </div>
           </div>
@@ -52,7 +54,7 @@
         </p>
   </div>
   <div class="reviewEdit hide">
-    <form >
+    <form action="/movies/<%= movie.imdbID %>/reviews/<%=movie.Reviews[i].id%>?_method=PUT" method="POST">
       <textarea class="editText" name="edit" id="" cols="150" rows="5"></textarea>
       <hr>
       <button type="submit" class="btn btn-primary float-right">SAVE</button>
