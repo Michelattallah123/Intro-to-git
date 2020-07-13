@@ -183,9 +183,32 @@ body,html{
 }
 
 
+/*==========
+//REVIEW DROPDOWN
+==========*/
 
+.reviewDropdown{
+    background-color: #FFF;
+    color:gray;
+    border:0;
+    outline: none !important;
+}
 
+.hide{
+    display:none;
+}
 
+.editText{
+    border: none;
+    overflow: auto;
+    outline: none;
+    resize: none;
+}
 
+.reviewEdit hr{
+    border:1px black solid;
+    padding:0px;
+    margin:2px;
+}
 
 

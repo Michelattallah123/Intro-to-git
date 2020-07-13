@@ -8,7 +8,6 @@ router.get("/",function(req,res){
     if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
         Movie.find({Title:regex},function(err,movies){
-            console.log(movies);
             res.render("index.ejs",{movies:movies});
             });
     }
@@ -22,7 +21,6 @@ router.get("/",function(req,res){
 
 router.get("/:id",function(req,res){
     Movie.findOne({imdbID:req.params.id}).populate('Reviews').exec(function(err,movie){
-        console.log(movie);
         res.render("./movies/show.ejs",{movie:movie});
     });});
 

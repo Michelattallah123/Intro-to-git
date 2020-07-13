@@ -24,32 +24,47 @@
             </div>
   </div>
   <div class="reviews">
-  <h1>Reviews</h1>
-  <% for(let i=0;i<movie.Reviews.length;i++){%>
-  <div class="reviewComment">
-    <p>
-    <%=movie.Reviews[i].review.text%>
-    </p>
-    <p>
-    <%=movie.Reviews[i].review.author.name%> - <%=moment(movie.Reviews[i].review.date).fromNow()%>
-    </p>
-    <p>
-    Rating:<%=movie.Reviews[i].review.rating%>
-    </p>
-    <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
+    <h1>Reviews</h1>
+    <hr>
+    <% for(let i=0;i<movie.Reviews.length;i++){%>
+      <div class="oneReview">
+    <div class="reviewComment">
+        <p>
+            <strong><%=movie.Reviews[i].review.author.name%></strong> - <%=moment(movie.Reviews[i].review.date).fromNow()%>
+            <%if(currentUser&&(movie.Reviews[i].review.author.username=currentUser.username)){%>
+            <div class="dropdown float-right">
+              <div class="btn-group dropleft">
+                <button class="reviewDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="editReviewButton dropdown-item">Edit</a>
+                    <a class="deleteReviewButton dropdown-item">Delete</a>
+                    </div>
+              </div>
+          </div>
+          <%}%>
+        </p>
+        <p class="reviewText"><%=movie.Reviews[i].review.text%></p>
+        
+        <p>
+            Rating:<%=movie.Reviews[i].review.rating%>
+        </p>
   </div>
-</div>
-  </div>
+  <div class="reviewEdit hide">
+    <form >
+      <textarea class="editText" name="edit" id="" cols="150" rows="5"></textarea>
+      <hr>
+      <button type="submit" class="btn btn-primary float-right">SAVE</button>
+      <button type="button" class="cancelEditButton btn btn-light float-right">CANCEL</button>
+    </form>
     
-    <%}%>
   </div>
+  <hr>
+</div>
+    <%}%>
+  
+  </div> 
 </div>
 
 <%- include("../partials/footer") %>
