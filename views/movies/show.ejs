@@ -1,14 +1,13 @@
 <%- include("../partials/header") %>
 <body id="show-body">
 <%- include("../partials/body") %>
-<div class="container">
+<div class="container pb-5">
 
-  <div class="movie-data">
+  <div class="movie-data" id="header-movie-data">
         <div class="movie-title">
           <h2><%=movie.Title%></h2>
         </div>
-          <p><%=movie.Runtime%> | <%=movie.Genre%> | <%=movie.Released%></p>
-          
+          <p><%=movie.Runtime%> <span class="seperator">|</span> <%= movie.Genre%>  <span class="seperator">|</span>  <%=movie.Released%></p>   
   </div>
   <div class="movie-media">
         <img src="<%=movie.Poster%>">
@@ -16,36 +15,47 @@
         width="560"  height="315" frameborder="0" ></iframe>        
   </div>
   <div class="movie-data">
-          <p><%=movie.Plot%></p>
-          <hr>
-          <p>Director: <%=movie.Director%></p>
-          <p>Writers: <%=movie.Writers%></p>
-          <p>Cast: <%=movie.Actors%><p>
-          <div class="dropdown">
-                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <p class="mb-3"><%=movie.Plot%></p>
+          <p><span class="crew-names">Director:</span> <%=movie.Director%></p>
+          <p><span class="crew-names">Writers:</span> <%=movie.Writers%></p>
+          <p class="mb-4"><span class="crew-names">Cast:</span> <%=movie.Actors%><p>
+            <hr>
+          <div class="btn-group dropleft float-right">
+                <button type="button" class="dropdown-toggle review_button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Review
-                </a>
-                <div class="dropdown-menu">
+                </button>
+                <div class="dropdown-menu" id="myDropdown">
                     <form class="px-4 py-3" method="POST" action="/movies/<%=movie.imdbID%>/reviews">
                       <div class="form-group">
                         <h4>My Review</h4>
                         <textarea name="review" id="review" cols="60" rows="10" placeholder="Text..."></textarea>
                       </div>
-                      <button type="submit" class="btn btn-primary">Add Review</button>
+                      <button type="submit" class="btn btn-primary float-left">Add Review</button>
+                      <select class="star-rating" name="rating" data-options="{&quot;clearable&quot;:false, &quot;showText&quot;:false}">>
+                        <option value="">Select a rating</option>
+                        <option value="5">Excellent</option>
+                        <option value="4">Very Good</option>
+                        <option value="3">Average</option>
+                        <option value="2">Poor</option>
+                        <option value="1">Terrible</option>
+                      </select>
                     </form>
                 </div>
-           </div>
+          </div>
+           
   <div class="reviews">
-    <h1>Reviews</h1>
-    <hr>
+    <h4 class="pb-4">Reviews</h4>
+    <% if(movie.Reviews.length==0){%>
+      <p>Looks like its empty here, write the first review!</p>
+    <%}%>
     <% for(let i=0;i<movie.Reviews.length;i++){%>
       <div class="oneReview">
     <div class="reviewComment">
         <p>
             <strong><%=movie.Reviews[i].review.author.name%></strong> - <%=moment(movie.Reviews[i].review.date).fromNow()%>
             <%if(currentUser&&(movie.Reviews[i].review.author.username=currentUser.username)){%>
-            <div class="dropdown float-right">
-              <div class="btn-group dropleft">
+            <div class="dropdown">
+              <div class="btn-group dropleft">  
                 <button class="reviewDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-ellipsis-v"></i>
                 </button>
@@ -62,7 +72,7 @@
         <p class="reviewText"><%=movie.Reviews[i].review.text%></p>
         
         <p>
-            Rating:<%=movie.Reviews[i].review.rating%>
+          <span class="stars"><%=movie.Reviews[i].review.rating%></span>
         </p>
     </div>
   <div class="reviewEdit hide">
@@ -73,11 +83,17 @@
       <button type="button" class="cancelEditButton btn btn-light float-right">CANCEL</button>
     </form>
     
+    
   </div>
   <hr>
     </div>
     <%}%>
+    
   </div>
-  </div> 
 </div>
+
+
+
+</div>
+
 <%- include("../partials/footer") %>

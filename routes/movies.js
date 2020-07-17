@@ -2,7 +2,8 @@ const express             = require("express"),
       router              = express.Router({mergeParams:true}),
       axios               = require('axios').default; 
 let   Movie               = require("../models/movie.js"),
-      Review              = require("../models/review.js");
+      Review              = require("../models/review.js"),
+      User                = require("../models/user.js");
 
 router.get("/",function(req,res){
     if(req.query.search){

@@ -22,25 +22,25 @@ router.post("/",middleware.isLoggedIn,function(req,res){
               
             }
             else{
-                     
                     Review.create({},function(err,review){
                     if(err){
                         console.log(err);
                     }
                     else{
-                            movie.Reviews.push(review);
-                            movie.save();
                             const newReview = {
                                 text:req.body.review,
                                 author:{
                                     id:         req.user,
                                     username:   req.user.username,
                                     name:       req.user.name
-                                }
+                                },
+                                rating:req.body.rating
                             }
                             review.movie=movie;
                             review.review = newReview;
                             review.save();
+                            movie.Reviews.push(review);
+                            movie.save();
                             user.reviews.push(review);
                             user.save();
                             req.flash("success","Successfully added comment");

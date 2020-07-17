@@ -82,8 +82,8 @@ function seedDb()
     
    
 
-    // User.deleteMany({},function(err,success){});
-    // Review.deleteMany({},function(err,success){});
+    User.deleteMany({},function(err,success){});
+    Review.deleteMany({},function(err,success){});
 
 }
 module.exports = seedDb;

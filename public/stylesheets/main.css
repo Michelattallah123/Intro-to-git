@@ -43,6 +43,21 @@ body,html{
 #login-submit{
     margin-top:15px;
 }
+.gl-star-rating-stars{
+transform: scale(0.9);
+float:right;
+}
+
+span.stars, span.stars span {
+    display: block;
+    background: url("../img/stars.png_") 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
 
 /*////ALERT FLASH/////*/
 .alert{
@@ -194,21 +209,43 @@ body,html{
 {
     padding-top:57px;
     background-color: beige;
+    height:100%;
 }
 
+.seperator{
+    margin:0 6px;
+}
 .movie-media{
     display:flex;
     justify-content:space-between ;
-    padding-bottom: 20px;
+    margin:22px 0;
+    background-color: #EEF6F9;
 }
 .movie-media img{
     height:315px;
 }
 
+.crew-names{
+    font-weight:500;
+}
 
-.movie-data .btn{
-    background-color: #2994B2;
+.movie-data {
+    font-size:15px;
+}
+.movie-data p{
+    margin:0;
+}
+.movie-data .review_button{
+    background-color: #0D3D5E;
     color:white;
+    outline:none;
+    border:0;
+    padding:4px 12px;
+    transition:0.5s;
+    margin-right: 30px;
+}
+.movie-data .review_button:hover{
+    background-color: rgba(13,61,94,0.9);
 }
 #show-body .container{
     padding:10px 0 0 0;
@@ -216,6 +253,12 @@ body,html{
     width:70%;
 }
 
+#header-movie-data{
+    line-height: 4px;
+}
+#header-movie-data p{
+    font-size:14px;
+}
 #show-body .movie-data{
     padding-left:20px;
 }
@@ -233,7 +276,10 @@ body,html{
 /*==========
 //REVIEW DROPDOWN
 ==========*/
-
+.reviewComment .dropdown{
+    float:right;
+    margin-right: 30px;
+}
 .reviewDropdown{
     background-color: #FFF;
     color:gray;
