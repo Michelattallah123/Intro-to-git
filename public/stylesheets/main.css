@@ -7,17 +7,30 @@ body,html{
 ===========*/
 
 /*////NAVBAR/////*/
+#index-body{
+    background-color: beige;
+}
+#index-body .container{
+    background: white;
+    padding-top:1px;
+}
+
 #main-navbar #login-dropMenu a{
     color:black;
 }
-
+#navbarSearch
+{
+    margin:auto 0;
+}
 #navbarSearchText{
    width:150px;
    height:28px;
 
 }
 #navbarButton{
-    height:32px;
+    height:28px;
+    line-height: 15px;
+    
 }
 
 #login-button
@@ -113,9 +126,15 @@ body,html{
 {
     margin-top:25px;
 }
+
 #movies-container img{
     height:260px;
 }
+@media (max-width: 992px) {
+    #movies-container img{
+        height:220px;
+    }
+  }
 
 .movie-title{
     height:10%;
@@ -173,13 +192,41 @@ body,html{
 ==========*/
 #show-body
 {
-    padding-top:50px;
-    ;
+    padding-top:57px;
+    background-color: beige;
+}
+
+.movie-media{
+    display:flex;
+    justify-content:space-between ;
+    padding-bottom: 20px;
+}
+.movie-media img{
+    height:315px;
+}
+
+
+.movie-data .btn{
+    background-color: #2994B2;
+    color:white;
+}
+#show-body .container{
+    padding:10px 0 0 0;
+    background-color: white;
+    width:70%;
+}
+
+#show-body .movie-data{
+    padding-left:20px;
 }
 
 #review
 {
     outline:none;
+}
+
+#show-body #main-navbar{
+    background-color: #0D3D5E;
 }
 
 

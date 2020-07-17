@@ -1,16 +1,29 @@
 <%- include("../partials/header") %>
 <body id="show-body">
 <%- include("../partials/body") %>
-
 <div class="container">
+
   <div class="movie-data">
+        <div class="movie-title">
+          <h2><%=movie.Title%></h2>
+        </div>
+          <p><%=movie.Runtime%> | <%=movie.Genre%> | <%=movie.Released%></p>
+          
+  </div>
+  <div class="movie-media">
         <img src="<%=movie.Poster%>">
-            <div class="movie-title">
-                    <h4><%=movie.Title%></h4>
-            </div>
-            <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Review This Movie
+        <iframe src="<%=movie.Trailer%>"
+        width="560"  height="315" frameborder="0" ></iframe>        
+  </div>
+  <div class="movie-data">
+          <p><%=movie.Plot%></p>
+          <hr>
+          <p>Director: <%=movie.Director%></p>
+          <p>Writers: <%=movie.Writers%></p>
+          <p>Cast: <%=movie.Actors%><p>
+          <div class="dropdown">
+                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Review
                 </a>
                 <div class="dropdown-menu">
                     <form class="px-4 py-3" method="POST" action="/movies/<%=movie.imdbID%>/reviews">
@@ -20,9 +33,8 @@
                       </div>
                       <button type="submit" class="btn btn-primary">Add Review</button>
                     </form>
-                  </div>
-            </div>
-  </div>
+                </div>
+           </div>
   <div class="reviews">
     <h1>Reviews</h1>
     <hr>
@@ -52,7 +64,7 @@
         <p>
             Rating:<%=movie.Reviews[i].review.rating%>
         </p>
-  </div>
+    </div>
   <div class="reviewEdit hide">
     <form action="/movies/<%= movie.imdbID %>/reviews/<%=movie.Reviews[i].id%>?_method=PUT" method="POST">
       <textarea class="editText" name="edit" id="" cols="150" rows="5"></textarea>
@@ -63,10 +75,9 @@
     
   </div>
   <hr>
-</div>
+    </div>
     <%}%>
-  
+  </div>
   </div> 
 </div>
-
 <%- include("../partials/footer") %>

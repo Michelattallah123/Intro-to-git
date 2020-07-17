@@ -7,6 +7,7 @@ var movieSchema = new mongoose.Schema({
     Runtime:       String,
     Genre:         String,
     Director:      String,
+    Trailer:       String,
     Writers:[],
     Actors:[],
     Reviews: [
