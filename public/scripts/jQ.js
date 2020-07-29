@@ -47,6 +47,8 @@ var autoExpand = function (field) {
 
 };
 
+
+//STARS
 $.fn.stars = function() {
     return $(this).each(function() {
         // Get the value
@@ -60,17 +62,35 @@ $.fn.stars = function() {
     });
 }
 
-
 $(function() {
     $('span.stars').stars();
 });
 
 
+
+//FORM STOP PROPAGATION
 $('.dropdown-menu').click(function(e) {
     e.stopPropagation();
 });
+
+//EXPAND TEXT AREA
 document.addEventListener('input', function (event) {
 	if (event.target.tagName.toLowerCase() !== 'textarea') return;
 	autoExpand(event.target);
 }, false);
 
+
+
+//NAVBAR SCROLL
+var myNav = document.querySelector('#index-body #main-navbar');
+window.onscroll = function () { 
+    "use strict";
+    if (document.body.scrollTop >= 200 || document.documentElement.scrollTop >= 200 ){
+    myNav.classList.add("nav-colored");
+        myNav.classList.remove("nav-transparent");
+    } 
+    else {
+        myNav.classList.add("nav-transparent");
+        myNav.classList.remove("nav-colored");
+    }
+};

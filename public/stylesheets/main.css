@@ -7,6 +7,16 @@ body,html{
 ===========*/
 
 /*////NAVBAR/////*/
+#index-body #main-navbar{
+    transition: 500ms;
+}
+.nav-colored{
+    background-color: #0D3D5E;
+}
+
+.nav-transparent{
+    background-color: transparent;
+}
 #index-body{
     background-color: beige;
 }
@@ -43,10 +53,15 @@ body,html{
 #login-submit{
     margin-top:15px;
 }
-.gl-star-rating-stars{
+#myDropdown .gl-star-rating-stars{
 transform: scale(0.9);
 float:right;
 }
+
+.reviewEdit .gl-star-rating-stars{
+    float:left;
+}
+
 
 span.stars, span.stars span {
     display: block;
@@ -131,7 +146,13 @@ span.stars span {
     }
   }
 
+@media (max-width: 768px) {
+#movies-container .cards{
+width:55%;
+margin-bottom:10px;
+}
 
+}
 
 #carouselExampleCaptions img{
     border:beige solid 2px;
@@ -161,45 +182,53 @@ span.stars span {
 //REGISTER
 ==========*/
 
-#registerBody{
-    background: url("/pictures/ticket.jpg");
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    backdrop-filter: blur(0.5);
-}
 
-.background-image {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-image: url("/pictures/ticket.jpg");
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    filter: blur(5px);
-    transform: scale(1.02);
-    overflow: hidden;
-} 
+
 
 #registerContainer{
     height:800px;
+    background-color: white;
+    width:75%;
+    margin:0 auto;
+    height:100%;
+    padding-top: 60px;
+    
 }
 
 #registerForm{
-    background-color: white;
-    width:600px;
-    padding:60px 30px;
-    border-radius:8px;
+    background-color: #0D3D5E;
+    color:white;
+    width:100%;
+    padding:50px 30px 40px 30px;
+    border: 0.25px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+
+.api-signup{
+    font-weight:500;
+    font-size:15px;
+}
+
+
+#registerForm button{
+margin-top:5px;
+}
+#registerForm .terms-paragraph{
+    font-size: 13px;
+    text-align: center;
+    margin-top: 12px;
 }
 
 #registerText{
-    color:white;
+    color:#0D3D5E;
 }
 
 #registerText hr{
   border: #AB2046 1px solid;
+  width:80%;
+  float:left;
+  margin-top:0;
 }
 
 /*==========

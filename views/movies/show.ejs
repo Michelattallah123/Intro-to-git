@@ -8,7 +8,14 @@
           <h2><%=movie.Title%></h2>
         </div>
           <p><%=movie.Runtime%> <span class="seperator">|</span> <%= movie.Genre%>  <span class="seperator">|</span>  <%=movie.Released%></p>   
-  </div>
+          <% if(movie.Reviews.length!=0){%>
+          <% var sum =0; %>
+          <% for(let i=0;i<movie.Reviews.length;i++){ %>
+            <% sum += movie.Reviews[i].review.rating;%>
+          <% } %>
+          <span class="stars mt-3"><%=sum/movie.Reviews.length%></span>
+          <% }%>
+        </div>
   <div class="movie-media">
         <img src="<%=movie.Poster%>">
         <iframe src="<%=movie.Trailer%>"
@@ -51,8 +58,12 @@
     <% for(let i=0;i<movie.Reviews.length;i++){%>
       <div class="oneReview">
     <div class="reviewComment">
-        <p>
+      <div class="reviewHeader d-flex align-items-center mb-3">
             <strong><%=movie.Reviews[i].review.author.name%></strong> - <%=moment(movie.Reviews[i].review.date).fromNow()%>
+            <span class="stars ml-3"><%=movie.Reviews[i].review.rating%></span>
+      </div>
+
+
             <%if(currentUser&&(movie.Reviews[i].review.author.username=currentUser.username)){%>
             <div class="dropdown">
               <div class="btn-group dropleft">  
@@ -60,7 +71,7 @@
                     <i class="fas fa-ellipsis-v"></i>
                 </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="editReviewButton dropdown-item">Edit</a>
+                   <button class="editReviewButton dropdown-item">Edit</button>
                     <form action="/movies/<%= movie.imdbID %>/reviews/<%=movie.Reviews[i].id%>?_method=DELETE" method="POST" >
                       <button class="submit button deleteReviewButton dropdown-item">Delete</button>
                     </form>
@@ -68,24 +79,20 @@
               </div>
           </div>
           <%}%>
-        </p>
         <p class="reviewText"><%=movie.Reviews[i].review.text%></p>
-        
-        <p>
-          <span class="stars"><%=movie.Reviews[i].review.rating%></span>
-        </p>
+        <hr class="mt-4">
     </div>
   <div class="reviewEdit hide">
     <form action="/movies/<%= movie.imdbID %>/reviews/<%=movie.Reviews[i].id%>?_method=PUT" method="POST">
       <textarea class="editText" name="edit" id="" cols="150" rows="5"></textarea>
-      <hr>
+      <hr class="mb-2">
+      <p class="float-left">
+        <span class="stars"><%=movie.Reviews[i].review.rating%></span>
+      </p>
       <button type="submit" class="btn btn-primary float-right">SAVE</button>
       <button type="button" class="cancelEditButton btn btn-light float-right">CANCEL</button>
     </form>
-    
-    
   </div>
-  <hr>
     </div>
     <%}%>
     

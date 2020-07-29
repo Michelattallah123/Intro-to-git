@@ -34,11 +34,13 @@ router.post("/",middleware.isLoggedIn,function(req,res){
                                     username:   req.user.username,
                                     name:       req.user.name
                                 },
-                                rating:req.body.rating
+                                rating:req.body.rating,
+                                date: Date.now()
                             }
                             review.movie=movie;
                             review.review = newReview;
                             review.save();
+                            console.log(review);
                             movie.Reviews.push(review);
                             movie.save();
                             user.reviews.push(review);

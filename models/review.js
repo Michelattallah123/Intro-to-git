@@ -16,10 +16,9 @@ var reviewSchema = new mongoose.Schema({
                 username: String,
                 name:     String
             },
-            date:{
-                type:Date,
-                default:Date.now()
-                }       
+            date:Date
+
+                     
         }
     ,
     movie: {
